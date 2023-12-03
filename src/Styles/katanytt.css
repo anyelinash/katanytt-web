@@ -1,0 +1,33 @@
+body {
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+  }
+  
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .custom-height {
+    height: 100%;
+  }
+  
+
+
+  
+  .navbar-brand {
+    font-size: 1.7rem;
+    font-weight: 700; /* Utiliza el peso de fuente 700 (negrita) de Roboto */
+    margin-left: -200px; /* Elimina el margen derecho, moverá la marca más a la izquierda */
+    font-family: 'Roboto', sans-serif; /* Usa la fuente Roboto o la que prefieras */
+  }
+  
+  
+ 
+  .btn {
+    border-radius: 20px;
+    
+  }
+  

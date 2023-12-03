@@ -12,6 +12,7 @@ import AlertasAire from './HomeAdmin/Aire/AlertasAire'
 import Homepage from './HomeAdmin/Homepage'
 import Usuarios from './HomeAdmin/Usuarios'
 import Empresas from './HomeAdmin/Empresas'
+import Home from './Katanytt/Home'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route path="/homepage" element={<Homepage/>} />
         <Route path="/usuarios" element={<Usuarios/>} />
         <Route path="/empresas" element={<Empresas/>} />
+        <Route path="/home" element={<Home/>} />
+
 
       </Routes>
     </BrowserRouter>
