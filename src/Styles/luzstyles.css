@@ -1,0 +1,199 @@
+/* DASHBOARD */
+
+.cuerpo{
+  background: linear-gradient(to right, #264566, #72adc4);
+  height: 100vh;
+}
+
+/* informacion rele*/
+.card-container {
+    width: 500px;
+    margin: 130px auto 0; 
+    left: -360px;
+  }
+  
+  .titulo {
+    background-color: #96a5acab;
+    color: rgb(0, 0, 0);
+    padding: 16px;  
+  }
+  
+  .card-body-info{
+    background-color: #96a5acab;
+    padding: 20px; 
+  }
+  
+  .btn.boton {
+    background-color: #028a3b;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .btn.estado {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  /* edicion rele*/
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    width: 400px; /* Cambiado a un valor absoluto o ajusta según tus necesidades */
+    min-height: 450px; /* Ajustado para que el modal tenga una altura mínima */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .close {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .guardar {
+    background-color: #035a27;
+    color: white;
+    margin-right: 6px;
+    margin-top: 30px;
+  }
+  
+  .guardar:hover,
+  .guardar:focus {
+    background-color: #035a27 !important; /* Mantiene el color de fondo al pasar el mouse o enfocar */
+    color: white; /* Asegura que el color del texto sea blanco en todas las condiciones */
+    outline: none; /* Elimina el contorno predeterminado en el enfoque */
+  }
+
+  /* temporizador*/
+  .custom-temporizador-card {
+    width: 50rem;
+    background-color: #B9C3C7;
+    top: 80px; 
+    left: -165px;
+  }
+  .btn.edit,
+  .btn.temp{
+    background-color: #028a3b;
+    color: white;
+    margin-right: 5px;
+  }
+ 
+  
+  
+  /* Alertas */
+  .custom-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .show-alert {
+    opacity: 1;
+  }
+  
+  .custom-alerta {
+    position: relative;
+    top: 80px; 
+    margin: 0 auto;
+    height: 20vh; 
+    width: 2000px; 
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+  }
+  
+  .custom-alerta h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .custom-alerta p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Notificaciones */
+  .custom-notificaciones-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .show-custom-notificacion {
+    opacity: 1;
+  }
+  
+  .custom-notificacion {
+    position: relative;
+    top: 80px;
+    margin: 0 auto;
+    height: 20vh;
+    width: 2000px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+  }
+  
+  .custom-notificacion .notificacion-fecha-hora {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .custom-notificacion .notificacion-descripcion {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .custom-notificacion .notificacion-mensaje {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  

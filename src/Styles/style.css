@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Nunito:wght@500;700;800&family=Poppins:wght@300&display=swap");
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.bcancel {
+    border: 1px solid #205080;
+    background-color: transparent;
+}
+
+.bcancel:hover {
+    background-color: #205080;
+    box-shadow: 0 4px 8px rgba(32, 80, 128, 0.5);
+    color: white;
+}
+
+.bcontinue {
+    background-color: #336699;
+    color: #fff;
+}
+
+.bcontinue.btn-selected {
+    background-color: #205080;
+}
+
+.bcontinue:hover {
+    box-shadow: 0 4px 8px rgba(32, 80, 128, 0.5);
+    color: white;
+}
+
+
+.usuario {
+    max-width: 800px;
+    margin: 0px auto;
+    text-align: center;
+  }
+  
+  .table-container {
+    margin-top: 60px;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+ 
+  
+  .btn-edit {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .btn-delete {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+  }
+  
+  .search-input {
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+    padding: 10px;
+    border: 1px solid #ccc; /* Agrega un borde */
+    border-radius: 20px; /* Añade bordes circulares */
+    margin-right: 10px; /* Espacio entre el input y el botón */
+  }
+  
+  
+  
+  .btn-agregar {
+    
+    background-color: #007bff;
+    color: #fff;
+  }
+  .btn-buscar{
+    margin-right: 350px;
+    background-color: #007bff;
+    color: #fff;
+    
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    width: 400px; /* Cambiado a un valor absoluto o ajusta según tus necesidades */
+    min-height: 450px; /* Ajustado para que el modal tenga una altura mínima */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+   .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  .cclose {
+    background-color: #c25347;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .guardarr {
+    background-color: #035a27;
+    color: white;
+    margin-right: 6px;
+    margin-top: 30px;
+  }
+  .guardarr:hover,
+  .guardarr:focus {
+    background-color: #035a27 !important; /* Mantiene el color de fondo al pasar el mouse o enfocar */
+    color: white; /* Asegura que el color del texto sea blanco en todas las condiciones */
+    outline: none; /* Elimina el contorno predeterminado en el enfoque */
+  }
