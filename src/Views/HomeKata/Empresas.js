@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Navbar from '../Dashboard/Navbar';
-import Sidebar from '../Dashboard/Sidebar';
-
+import Sidebark from '../Dashboard/Sidebark';
+import '../../Styles/style.css';
 
 const Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
@@ -20,9 +20,10 @@ const Empresa = () => {
     obtenerEmpresas();
   }, []);
 
+  // Método para obtener empresas utilizando el método GET
   const obtenerEmpresas = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/users/empresas');
+      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/empresas');
       if (response.status === 200) {
         setEmpresas(response.data);
       } else {
@@ -41,11 +42,14 @@ const Empresa = () => {
     }));
   };
 
+  // Método para agregar una nueva empresa utilizando el método POST
   const handleAgregarEmpresa = async () => {
     try {
-      const response = await Axios.post('http://katanytt-api.34.73.226.103.sslip.io/users/empresas', nuevaEmpresa);
+      const response = await Axios.post('http://katanytt-api.34.73.226.103.sslip.io/empresas', nuevaEmpresa);
       if (response.status === 201) {
+        console.log('Empresa agregada correctamente');
         obtenerEmpresas();
+        // Limpiar el formulario después de agregar una empresa
         setNuevaEmpresa({
           codigo_usu: '',
           nombre: '',
@@ -61,9 +65,10 @@ const Empresa = () => {
     }
   };
 
+  // Método para buscar empresas utilizando el método GET
   const handleBuscarEmpresa = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/users/empresas');
+      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/empresas');
       if (response.status === 200) {
         const empresasFiltradas = response.data.filter(
           (empresa) =>
@@ -81,34 +86,12 @@ const Empresa = () => {
     }
   };
 
-  const renderEmpresas = () => {
-    if (!Array.isArray(empresas)) {
-      console.error('La lista de empresas no es un array:', empresas);
-      return null;
-    }
-
-    return empresas.map((empresa) => (
-      <tr key={empresa.codigo_emp}>
-        <td>{empresa.codigo_usu}</td>
-        <td>{empresa.nombre}</td>
-        <td>{empresa.ruc}</td>
-        <td>{empresa.correo}</td>
-        <td>
-          <button className="btn btn-edit" onClick={() => handleEditarEmpresa(empresa)}>
-            Editar
-          </button>
-          <button className="btn btn-delete" onClick={() => handleEliminarEmpresa(empresa.codigo_emp)}>
-            Eliminar
-          </button>
-        </td>
-      </tr>
-    ));
-  };
-
+  // Método para eliminar una empresa utilizando el método DELETE
   const handleEliminarEmpresa = async (id) => {
     try {
-      const response = await Axios.delete(`http://katanytt-api.34.73.226.103.sslip.io/users/empresas/${id}`);
+      const response = await Axios.delete(`http://katanytt-api.34.73.226.103.sslip.io/empresas/${id}`);
       if (response.status === 204) {
+        console.log('Empresa eliminada correctamente');
         obtenerEmpresas();
       } else {
         console.error('Error al eliminar empresa. Respuesta del servidor:', response);
@@ -118,6 +101,7 @@ const Empresa = () => {
     }
   };
 
+  // Método para cerrar el modal de edición
   const handleCloseEdit = () => {
     setModalAgregar(false);
     setEmpresaSeleccionada(null);
@@ -129,6 +113,7 @@ const Empresa = () => {
     });
   };
 
+  // Método para editar una empresa utilizando el método PUT
   const handleEditarEmpresa = (empresa) => {
     setEmpresaSeleccionada(empresa);
     setNuevaEmpresa({
@@ -140,13 +125,21 @@ const Empresa = () => {
     setModalAgregar(true);
   };
 
+  // Método para guardar cambios en una empresa utilizando el método PUT
   const handleGuardarCambios = async () => {
     try {
       const response = await Axios.put(
-        `http://katanytt-api.34.73.226.103.sslip.io/users/empresas/${empresaSeleccionada.codigo_emp}`,
-        nuevaEmpresa
+        `http://katanytt-api.34.73.226.103.sslip.io/empresas/${empresaSeleccionada.codigo_usu}`,
+        {
+          codigo_usu: nuevaEmpresa.codigo_usu,
+          nombre: nuevaEmpresa.nombre,
+          ruc: nuevaEmpresa.ruc,
+          correo: nuevaEmpresa.correo,
+        }
       );
+
       if (response.status === 200) {
+        console.log('Cambios guardados correctamente');
         obtenerEmpresas();
         setModalAgregar(false);
         setEmpresaSeleccionada(null);
@@ -164,10 +157,35 @@ const Empresa = () => {
     }
   };
 
+  // Método para renderizar la lista de empresas
+  const renderEmpresas = () => {
+    if (!Array.isArray(empresas)) {
+      console.error('La lista de empresas no es un array:', empresas);
+      return null;
+    }
+
+    return empresas.map((empresa) => (
+      <tr key={empresa.codigo_usu}>
+        <td>{empresa.codigo_usu}</td>
+        <td>{empresa.nombre}</td>
+        <td>{empresa.ruc}</td>
+        <td>{empresa.correo}</td>
+        <td>
+          <button className="btn btn-edit" onClick={() => handleEditarEmpresa(empresa)}>
+            Editar
+          </button>
+          <button className="btn btn-delete" onClick={() => handleEliminarEmpresa(empresa.codigo_usu)}>
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    ));
+  };
+
   return (
     <div className='cuerpo'>
       <Navbar />
-      <Sidebar />
+      <Sidebark />
       <div className="empresa">
         <h1>Lista de Empresas</h1>
         <div className="search-container">
@@ -189,8 +207,8 @@ const Empresa = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>Código de Usuario</th>
-                <th>Nombre</th>
+                <th>ID</th>
+                <th>Empresa</th>
                 <th>RUC</th>
                 <th>Correo</th>
                 <th>Acciones</th>
@@ -212,7 +230,7 @@ const Empresa = () => {
             </div>
             <div className="modal-body">
               <div className="form-group">
-                <label htmlFor="codigo_usu">Código de Usuario:</label>
+                <label htmlFor="codigo_usu">ID:</label>
                 <input
                   type="text"
                   className="form-control"
@@ -223,7 +241,7 @@ const Empresa = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="nombre">Nombre:</label>
+                <label htmlFor="nombre">Empresa:</label>
                 <input
                   type="text"
                   className="form-control"

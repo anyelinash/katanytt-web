@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import signupImage from '../Images/signup.svg'; 
+import signupImage from '../../Images/signup.svg'; 
 
 function Signup() {
   const [empresa, setEmpresa] = useState('');
