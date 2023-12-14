@@ -34,8 +34,6 @@ function App() {
         <Route path="/homekata" element={<Homekata/>} />
         <Route path="/empresas" element={<Empresas/>} />
 
-
-
       </Routes>
     </BrowserRouter>
   );

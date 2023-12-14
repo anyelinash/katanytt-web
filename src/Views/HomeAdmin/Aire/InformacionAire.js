@@ -87,7 +87,7 @@ const InformacionLuz = () => {
                 </button>
               </div>
             </div>
-
+  
             {editMode && (
               <div className="card floating-card">
                 <div className="card-header">
@@ -121,6 +121,7 @@ const InformacionLuz = () => {
       </div>
     </div>
   );
+  
 };
 
 export default InformacionLuz;
