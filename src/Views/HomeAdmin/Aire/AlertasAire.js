@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../Dashboard/Navbar';
-import Sidebar from '../../Dashboard/Sidebar';
+import Navbar from '../../Components/Navbar';
+import Sidebar from '../../Components/Sidebar';
 import '../../../Styles/luzstyles.css';
 
 function Alertas() {

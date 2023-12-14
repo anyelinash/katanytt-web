@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../Dashboard/Navbar';
-import Sidebar2 from '../../Dashboard/Sidebar';
+import Navbar from '../../Components/Navbar';
+import Sidebar2 from '../../Components/Sidebar';
 import '../../../Styles/luzstyles.css';
 
 const InformacionLuz = () => {
   const [sensorInfo, setSensorInfo] = useState({
-    fechaHora: '',
-    calidadAire: '',
-    monoxidoCarbono: 0,
-    amoniaco: 0,
-    alerta: '',
-    largoPlazo: 0,
+    nombre: '',
+    descripcion: '',
+    ubicacion: '',
+    estado: '',
   });
 
   const [editMode, setEditMode] = useState(false);
@@ -21,8 +19,8 @@ const InformacionLuz = () => {
     fetch('http://katanytt-api.34.73.226.103.sslip.io/iot/modulo/7')
       .then(response => response.json())
       .then(data => {
-        const { fechaHora, calidadAire, monoxidoCarbono, amoniaco, alerta, largoPlazo } = data;
-        setSensorInfo({ fechaHora, calidadAire, monoxidoCarbono, amoniaco, alerta, largoPlazo });
+        const { nombre, descripcion, ubicacion, estado } = data;
+        setSensorInfo({ nombre, descripcion, ubicacion, estado });
       })
       .catch(error => {
         console.error('Error al obtener los datos del sensor:', error);
@@ -76,14 +74,12 @@ const InformacionLuz = () => {
                 <h5 className="card-title">Información del Sensor</h5>
               </div>
               <div className="card-body-info">
-                <p>Fecha y Hora: {sensorInfo.fechaHora}</p>
-                <p>Calidad de Aire: {sensorInfo.calidadAire}</p>
-                <p>Monóxido de Carbono: {sensorInfo.monoxidoCarbono}</p>
-                <p>Amoniaco: {sensorInfo.amoniaco}</p>
-                <p>Alerta: {sensorInfo.alerta}</p>
-                <p>Largo Plazo: {sensorInfo.largoPlazo}</p>
+                <p>Nombre: {sensorInfo.nombre}</p>
+                <p>Descripción: {sensorInfo.descripcion}</p>
+                <p>Ubicación: {sensorInfo.ubicacion}</p>
+                <p>Estado: {sensorInfo.estado}</p>
                 <button className="btn boton" onClick={handleEdit}>
-                  Editar
+                  Gestionar
                 </button>
               </div>
             </div>
@@ -97,19 +93,50 @@ const InformacionLuz = () => {
                   </button>
                 </div>
                 <div className="card-body">
-                  {/* ... (Your existing form fields) */}
                   <div className="form-group">
-                    <label htmlFor="fechaHora">Fecha y Hora</label>
+                    <label htmlFor="nombre">Nombre</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="fechaHora"
-                      name="fechaHora"
-                      value={editInfo.fechaHora}
+                      id="nombre"
+                      name="nombre"
+                      value={editInfo.nombre}
                       onChange={handleInputChange}
                     />
                   </div>
-                  {/* ... (Other form fields) */}
+                  <div className="form-group">
+                    <label htmlFor="descripcion">Descripción</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="descripcion"
+                      name="descripcion"
+                      value={editInfo.descripcion}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="ubicacion">Ubicación</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="ubicacion"
+                      name="ubicacion"
+                      value={editInfo.ubicacion}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="estado">Estado</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="estado"
+                      name="estado"
+                      value={editInfo.estado}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                   <button className="btn btn-success" onClick={handleUpdateInfo}>
                     Guardar Cambios
                   </button>
@@ -121,7 +148,6 @@ const InformacionLuz = () => {
       </div>
     </div>
   );
-  
 };
 
 export default InformacionLuz;

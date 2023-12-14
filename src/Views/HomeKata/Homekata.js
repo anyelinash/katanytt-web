@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, Tooltip, Area } from "recharts";
-import Navbar from '../Dashboard/Navbar';
-import Sidebark from '../Dashboard/Sidebark';
+import Navbar from '../Components/Navbar';
+import Sidebark from '../Components/Sidebark';
 import '../../Styles/style.css';
 
 const data = [

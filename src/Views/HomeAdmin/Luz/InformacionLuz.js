@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Navbar from '../../Dashboard/Navbar';
-import Sidebar from '../../Dashboard/Sidebar';
+import Navbar from '../../Components/Navbar';
+import Sidebar from '../../Components/Sidebar';
 import TemporizadorLuz from './TemporizadorLuz';
 import '../../../Styles/luzstyles.css';
 
@@ -22,7 +22,7 @@ const InformacionLuz = () => {
   }, []);
 
   const obtenerDatosRele = () => {
-    Axios.get('http://katanytt-api.34.73.226.103.sslip.io/iot/reles/3/')
+    Axios.get('https://api.katayaku.xyz/v1/iot/reles/1')
       .then(response => {
         const { nombre, ubicacion, descripcion, status } = response.data;
         setReleInfo({ nombre, ubicacion, descripcion, estado: status ? 'Activo' : 'Inactivo' });
@@ -51,7 +51,7 @@ const InformacionLuz = () => {
   };
 
   const handleUpdateInfo = () => {
-    Axios.put('http://katanytt-api.34.73.226.103.sslip.io/iot/reles/3/', editInfo)
+    Axios.put('https://api.katayaku.xyz/v1/iot/reles/1', editInfo)
       .then(response => {
         setReleInfo({ ...editInfo });
         setEditMode(false);
@@ -62,11 +62,11 @@ const InformacionLuz = () => {
   };
 
   const handleEstadoChange = () => {
-    Axios.get('http://katanytt-api.34.73.226.103.sslip.io/iot/reles/3/')
+    Axios.get('https://api.katayaku.xyz/v1/iot/reles/1')
       .then(response => {
         const nuevoEstado = !response.data.status;
 
-        Axios.put('http://katanytt-api.34.73.226.103.sslip.io/iot/reles/3/', {
+        Axios.put('https://api.katayaku.xyz/v1/iot/reles/1', {
           nombre: 'rele',
           topico: 'relay/control',
           status: nuevoEstado,

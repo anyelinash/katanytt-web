@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Navbar from '../Dashboard/Navbar';
-import Sidebark from '../Dashboard/Sidebark';
+import Navbar from '../Components/Navbar';
+import Sidebark from '../Components/Sidebark';
 import '../../Styles/style.css';
 
 const Empresa = () => {

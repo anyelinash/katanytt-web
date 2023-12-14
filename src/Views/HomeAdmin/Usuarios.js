@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Navbar from '../Dashboard/Navbar';
-import Sidebar from '../Dashboard/Sidebar';
+import Navbar from '../Components/Navbar';
+import Sidebar from '../Components/Sidebar';
 import '../../Styles/style.css';
 
 const Usuario = () => {
