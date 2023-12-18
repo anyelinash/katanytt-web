@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Navbar from '../Components/Navbar';
 import Sidebark from '../Components/Sidebark';
-import '../../Styles/style.css';
+import '../../Styles/tablas.css';
 
-const Empresa = () => {
+const Empresas = () => {
   const [empresas, setEmpresas] = useState([]);
   const [nuevaEmpresa, setNuevaEmpresa] = useState({
     codigo_usu: '',
@@ -20,10 +20,9 @@ const Empresa = () => {
     obtenerEmpresas();
   }, []);
 
-  // Método para obtener empresas utilizando el método GET
   const obtenerEmpresas = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/empresas');
+      const response = await Axios.get('https://api.katayaku.xyz/v1/users/empresas');
       if (response.status === 200) {
         setEmpresas(response.data);
       } else {
@@ -42,14 +41,12 @@ const Empresa = () => {
     }));
   };
 
-  // Método para agregar una nueva empresa utilizando el método POST
   const handleAgregarEmpresa = async () => {
     try {
-      const response = await Axios.post('http://katanytt-api.34.73.226.103.sslip.io/empresas', nuevaEmpresa);
+      const response = await Axios.post('https://api.katayaku.xyz/v1/users/empresas', nuevaEmpresa);
       if (response.status === 201) {
         console.log('Empresa agregada correctamente');
         obtenerEmpresas();
-        // Limpiar el formulario después de agregar una empresa
         setNuevaEmpresa({
           codigo_usu: '',
           nombre: '',
@@ -65,10 +62,9 @@ const Empresa = () => {
     }
   };
 
-  // Método para buscar empresas utilizando el método GET
   const handleBuscarEmpresa = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/empresas');
+      const response = await Axios.get('https://api.katayaku.xyz/v1/users/empresas');
       if (response.status === 200) {
         const empresasFiltradas = response.data.filter(
           (empresa) =>
@@ -86,10 +82,9 @@ const Empresa = () => {
     }
   };
 
-  // Método para eliminar una empresa utilizando el método DELETE
   const handleEliminarEmpresa = async (id) => {
     try {
-      const response = await Axios.delete(`http://katanytt-api.34.73.226.103.sslip.io/empresas/${id}`);
+      const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/empresas/${id}`);
       if (response.status === 204) {
         console.log('Empresa eliminada correctamente');
         obtenerEmpresas();
@@ -101,7 +96,6 @@ const Empresa = () => {
     }
   };
 
-  // Método para cerrar el modal de edición
   const handleCloseEdit = () => {
     setModalAgregar(false);
     setEmpresaSeleccionada(null);
@@ -113,7 +107,6 @@ const Empresa = () => {
     });
   };
 
-  // Método para editar una empresa utilizando el método PUT
   const handleEditarEmpresa = (empresa) => {
     setEmpresaSeleccionada(empresa);
     setNuevaEmpresa({
@@ -125,11 +118,10 @@ const Empresa = () => {
     setModalAgregar(true);
   };
 
-  // Método para guardar cambios en una empresa utilizando el método PUT
   const handleGuardarCambios = async () => {
     try {
       const response = await Axios.put(
-        `http://katanytt-api.34.73.226.103.sslip.io/empresas/${empresaSeleccionada.codigo_usu}`,
+        `https://api.katayaku.xyz/v1/users/empresas/${empresaSeleccionada.codigo_usu}`,
         {
           codigo_usu: nuevaEmpresa.codigo_usu,
           nombre: nuevaEmpresa.nombre,
@@ -157,7 +149,6 @@ const Empresa = () => {
     }
   };
 
-  // Método para renderizar la lista de empresas
   const renderEmpresas = () => {
     if (!Array.isArray(empresas)) {
       console.error('La lista de empresas no es un array:', empresas);
@@ -203,12 +194,12 @@ const Empresa = () => {
             Agregar Empresa
           </button>
         </div>
-        <div className="table-container">
+        <div className="table-container"  >
           <table className="table">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Empresa</th>
+                <th>Nombre</th>
                 <th>RUC</th>
                 <th>Correo</th>
                 <th>Acciones</th>
@@ -241,7 +232,7 @@ const Empresa = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="nombre">Empresa:</label>
+                <label htmlFor="nombre">Nombre:</label>
                 <input
                   type="text"
                   className="form-control"
@@ -288,4 +279,4 @@ const Empresa = () => {
   );
 };
 
-export default Empresa;
+export default Empresas;

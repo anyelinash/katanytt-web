@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Navbar from '../Components/Navbar';
 import Sidebar from '../Components/Sidebar';
-import '../../Styles/style.css';
+import '../../Styles/tablas.css';
 
 const Usuario = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -25,7 +25,7 @@ const Usuario = () => {
   // Método para obtener usuarios utilizando el método GET
   const obtenerUsuarios = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/users/usuarios');
+      const response = await Axios.get('https://api.katayaku.xyz/v1/users/usuarios');
       if (response.status === 200) {
         setUsuarios(response.data);
       } else {
@@ -47,7 +47,7 @@ const Usuario = () => {
   // Método para agregar un nuevo usuario utilizando el método POST
   const handleAgregarUsuario = async () => {
     try {
-      const response = await Axios.post('http://katanytt-api.34.73.226.103.sslip.io/users/usuarios', nuevoUsuario);
+      const response = await Axios.post('https://api.katayaku.xyz/v1/users/usuarios', nuevoUsuario);
       if (response.status === 201) {
         console.log('Usuario agregado correctamente');
         obtenerUsuarios();
@@ -72,7 +72,7 @@ const Usuario = () => {
   // Método para buscar usuarios utilizando el método GET
   const handleBuscarUsuario = async () => {
     try {
-      const response = await Axios.get('http://katanytt-api.34.73.226.103.sslip.io/users/usuarios');
+      const response = await Axios.get('https://api.katayaku.xyz/v1/users/usuarios');
       if (response.status === 200) {
         const usuariosFiltrados = response.data.filter(
           (usuario) =>
@@ -94,7 +94,7 @@ const Usuario = () => {
   // Método para eliminar un usuario utilizando el método DELETE
   const handleEliminarUsuario = async (id) => {
     try {
-      const response = await Axios.delete(`http://katanytt-api.34.73.226.103.sslip.io/users/usuarios/${id}`);
+      const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/usuarios/${id}`);
       if (response.status === 204) {
         console.log('Usuario eliminado correctamente');
         obtenerUsuarios();
@@ -138,7 +138,7 @@ const Usuario = () => {
   const handleGuardarCambios = async () => {
     try {
       const response = await Axios.put(
-        `http://katanytt-api.34.73.226.103.sslip.io/users/usuarios/${usuarioSeleccionado.codigo_usu}`,
+        `https://api.katayaku.xyz/v1/users/usuarios/${usuarioSeleccionado.codigo_usu}`,
         {
           provider_id: nuevoUsuario.provider_id,
           nombre: nuevoUsuario.nombre,
