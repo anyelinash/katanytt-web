@@ -1,34 +1,17 @@
 import React, { useState } from "react";
 import loginImage from "../../Images/login.svg";
-import { loginUsuario } from "../../api";
+//import { loginUsuario } from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      // Utiliza la función loginUsuario para iniciar sesión
-      const token = await loginUsuario({ correo: email, password });
-
-      console.log("Token de autenticación:", token);
-
-      if (token) {
-        // Si se obtiene un token, puedes manejar la autenticación y redirección aquí
-        // Por ejemplo, puedes almacenar el token en el contexto de autenticación o en el estado
-        // y redirigir al usuario a la página de menú
-        console.log("Inicio de sesión automático exitoso");
-        // Aquí puedes agregar la lógica para redirigir al usuario a la página de menú
-        // Por ejemplo, puedes utilizar el enrutador de tu aplicación (react-router-dom) para hacer esto
-        history.push('/homepage'); // Asegúrate de tener acceso a la historia de la navegación
-      } else {
-        console.log("Credenciales inválidas");
-        // Aquí puedes manejar el caso en el que las credenciales no son válidas
-      }
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error);
-      // Aquí puedes manejar otros errores relacionados con la autenticación
-    }
+    
+    navigate('/homepage');
+    
   };
 
   return (
