@@ -33,7 +33,7 @@ function App() {
         <Route path="/usuarios" element={<Usuarios/>} />
         <Route path="/homekata" element={<Homekata/>} />
         <Route path="/empresas" element={<Empresas/>} />
-
+        <Route path="*" element={<Login/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -16,7 +16,7 @@ const InformacionLuz = () => {
 
   useEffect(() => {
     // Solicitud a la API para obtener la información del sensor
-    fetch('http://katanytt-api.34.73.226.103.sslip.io/iot/modulo/7')
+    fetch('http://katanytt-api.34.73.226.103.sslip.io/iot/modulo/')
       .then(response => response.json())
       .then(data => {
         const { nombre, descripcion, ubicacion, estado } = data;
@@ -143,6 +143,7 @@ const InformacionLuz = () => {
                 </div>
               </div>
             )}
+            
           </main>
         </div>
       </div>
