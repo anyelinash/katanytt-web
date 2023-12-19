@@ -22,7 +22,7 @@ const Usuario = () => {
     obtenerUsuarios();
   }, []);
 
-  // Método para obtener usuarios utilizando el método GET
+  // Método para obtener usuarios utilizando el método GET (funciona)
   const obtenerUsuarios = async () => {
     try {
       const response = await Axios.get('https://api.katayaku.xyz/v1/users/usuarios');
@@ -69,7 +69,7 @@ const Usuario = () => {
     }
   };
 
-  // Método para buscar usuarios utilizando el método GET
+  // Método para buscar usuarios utilizando el método GET (funciona)
   const handleBuscarUsuario = async () => {
     try {
       const response = await Axios.get('https://api.katayaku.xyz/v1/users/usuarios');
@@ -91,18 +91,23 @@ const Usuario = () => {
     }
   };
 
-  // Método para eliminar un usuario utilizando el método DELETE
+  // Método para eliminar un usuario utilizando el método DELETE (funciona)
   const handleEliminarUsuario = async (id) => {
-    try {
-      const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/usuarios/${id}`);
-      if (response.status === 204) {
-        console.log('Usuario eliminado correctamente');
-        obtenerUsuarios();
-      } else {
-        console.error('Error al eliminar usuario. Respuesta del servidor:', response);
+    // Mostrar un cuadro de diálogo de confirmación antes de eliminar
+    const confirmacion = window.confirm('¿Está seguro de querer eliminar este usuario?');
+
+    if (confirmacion) {
+      try {
+        const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/usuario/${id}`);
+        if (response.status === 204) {
+          console.log('Usuario eliminado correctamente');
+          obtenerUsuarios();
+        } else {
+          console.error('Error al eliminar usuario. Respuesta del servidor:', response);
+        }
+      } catch (error) {
+        console.error('Error al eliminar usuario', error);
       }
-    } catch (error) {
-      console.error('Error al eliminar usuario', error);
     }
   };
 
@@ -138,7 +143,7 @@ const Usuario = () => {
   const handleGuardarCambios = async () => {
     try {
       const response = await Axios.put(
-        `https://api.katayaku.xyz/v1/users/usuarios/${usuarioSeleccionado.codigo_usu}`,
+        `https://api.katayaku.xyz/v1/users/usuario/${usuarioSeleccionado.codigo_usu}`,
         {
           provider_id: nuevoUsuario.provider_id,
           nombre: nuevoUsuario.nombre,
