@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../Components/Navbar";
 import Sidebar2 from "../../Components/Sidebar";
 import "../../../Styles/luzstyles.css";
-import mqtt from "mqtt";
+
 
 const InformacionLuz = () => {
   const [sensorInfo, setSensorInfo] = useState({

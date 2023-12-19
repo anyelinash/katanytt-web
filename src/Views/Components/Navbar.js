@@ -1,5 +1,4 @@
 import React from 'react';
-import kataImage from '../../Images/kata.png';
 import '../../Styles/navbar.css';
 
 const AppNavbar = () => {

@@ -47,10 +47,21 @@ const Usuario = () => {
   // Método para agregar un nuevo usuario utilizando el método POST
   const handleAgregarUsuario = async () => {
     try {
-      const response = await Axios.post('https://api.katayaku.xyz/v1/users/usuarios', nuevoUsuario);
+      // Asegúrate de que nuevoUsuario tenga los campos correctos
+      const { codigo_usu, ...rest } = nuevoUsuario;
+  
+      // Verifica el formato de los datos
+      console.log('Datos del nuevo usuario:', rest);
+  
+      // Realiza la solicitud POST sin codigo_usu
+      const response = await Axios.post('https://api.katayaku.xyz/v1/users/usuarios', rest);
+  
+      console.log('Respuesta del servidor:', response);
+  
       if (response.status === 201) {
         console.log('Usuario agregado correctamente');
         obtenerUsuarios();
+  
         // Limpiar el formulario después de agregar un usuario
         setNuevoUsuario({
           provider_id: '',
@@ -60,12 +71,23 @@ const Usuario = () => {
           contrasena: '',
           photo_url: '',
         });
+  
         setModalAgregar(false);
       } else {
-        console.error('Error al agregar usuario. Respuesta del servidor:', response);
+        console.error(`Error al agregar usuario. Respuesta del servidor (status ${response.status}):`, response.data);
       }
     } catch (error) {
-      console.error('Error al agregar usuario', error);
+      // Muestra información específica del error de Axios
+      if (error.response) {
+        // La solicitud fue hecha, pero el servidor respondió con un código de estado que no está en el rango de 2xx
+        console.error('Error de respuesta del servidor:', error.response.data);
+      } else if (error.request) {
+        // La solicitud fue hecha pero no se recibió respuesta
+        console.error('No se recibió respuesta del servidor');
+      } else {
+        // Algo sucedió en la configuración de la solicitud que provocó un error
+        console.error('Error al realizar la solicitud:', error.message);
+      }
     }
   };
 
@@ -214,7 +236,6 @@ const Usuario = () => {
       <Navbar />
       <Sidebar />
       <div className="usuario">
-        <h1>Lista de Usuarios</h1>
         <div className="search-container">
           <input
             className="search-input"

@@ -1,45 +1,56 @@
+/* Estilos Navbar */
 .navbar {
     margin: 0;
     background-color: #264566;
     padding: 10px 0px;
-    position: absolute;
-    top: -10;
-    right: 0px;
+    position: relative; /* Cambiado a relative para que no se sobrepape con el contenido */
     width: 100%;
     z-index: 1000;
-}
-
-.busqueda {
-    display: flex;
-    align-items: center;
-    margin-right: auto; /* Cambia el margen a auto para centrar en cualquier ancho de pantalla */
-    margin-left: 500px; /* Cambia el margen a auto para centrar en cualquier ancho de pantalla */
-}
-.brand-name {
-    margin-left: 30px;
+  }
+  
+  .brand-name {
+    margin-left: 45px;
     font-weight: bold;
-    font-size: 30px;
-    color: #fff; /* Añade el color del texto para la marca */
-}
-
-/* Estilos para los elementos del Navbar */
-.navbar-nav .nav-link {
+    font-size: 25px;
     color: #fff;
-    margin: 0 50px;
-
-}
-
-
-.custom-search-form {
+  }
+  
+  /* Estilos para los elementos del Navbar */
+  .navbar-nav .nav-link {
+    color: #fff;
+    margin: 0 10px;
+  }
+  
+  .custom-search-form {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Cambia el margen a auto para centrar en cualquier ancho de pantalla */
-    margin-right: 50px; /* Agrega un margen derecho para separar del perfil */
-}
-
-
-
-.nbutton {
-    margin-left: 450px; /* Ajusta el margen para separar del enlace del perfil */
-}
+    margin-left: auto;
+    margin-right: 10px; /* Ajustado el margen derecho */
+  }
+  
+  .nbutton {
+    margin-left: auto;
+    margin-right: 10px; /* Ajustado el margen derecho */
+  }
+  
+  /* Media query para hacerlo responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 10px;
+    }
+  
+    .custom-search-form,
+    .nbutton {
+      margin: 0; /* Elimina los márgenes en pantallas pequeñas */
+    }
+  
+    .brand-name {
+      margin-left: 10px;
+      font-size: 18px; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    }
+  
+    .navbar-toggler {
+      display: block;
+    }
+  }
 

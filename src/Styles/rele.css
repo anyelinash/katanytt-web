@@ -1,0 +1,31 @@
+.tu-componente-card {
+    margin-top: 100px;
+    margin-left: -60px; /* Ajusta la posición según tus necesidades */
+    width: 400px; /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    padding: 20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 3px solid #ffffff67;
+    display: block;
+    
+  }
+  
+  .tu-componente-card label {
+    font-size: 17px;
+    color: #ebeaea;
+    margin-bottom: 10px; /* Agrega un espacio entre el label y el Switch */
+  }
+  
+  .tu-componente-card img {
+    max-width: 150%;
+    max-height: 100%;
+    margin-left: -80px;
+  }
+  .tu-componente-card Switch {
+    display: block;
+  }
+  .tu-componente-card .react-switch {
+    margin-top: 10px;
+  }
+  

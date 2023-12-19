@@ -50,3 +50,39 @@
     
 }
 
+/* Media query para hacer el Sidebar responsive */
+@media (max-width: 768px) {
+  #sidebar {
+    width: 100%;
+  }
+
+  #sidebar img.kataya {
+    margin: 15px auto;
+    display: block;
+  }
+
+  #sidebar.responsive .sidebar-header,
+  #sidebar.responsive ul.components {
+    display: none;
+  }
+
+  #sidebar.responsive .sidebar-header h3,
+  #sidebar.responsive ul.components li {
+    text-align: center;
+    display: block;
+  }
+
+  #sidebar.responsive ul.components {
+    text-align: center;
+  }
+
+  #sidebar.responsive ul.components li a {
+    padding: 15px;
+    font-size: 1.5em;
+    display: block;
+  }
+
+  #sidebar.responsive ul.components li a span {
+    margin-right: 0;
+  }
+}
