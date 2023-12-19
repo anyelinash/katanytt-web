@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../../Components/Navbar';
-import Sidebar2 from '../../Components/Sidebar';
-import '../../../Styles/luzstyles.css';
+import React, { useState, useEffect } from "react";
+import Navbar from "../../Components/Navbar";
+import Sidebar2 from "../../Components/Sidebar";
+import "../../../Styles/luzstyles.css";
+import mqtt from "mqtt";
 
 const InformacionLuz = () => {
   const [sensorInfo, setSensorInfo] = useState({
-    nombre: '',
-    descripcion: '',
-    ubicacion: '',
-    estado: '',
+    nombre: "",
+    descripcion: "",
+    ubicacion: "",
+    estado: "",
   });
 
   const [editMode, setEditMode] = useState(false);
@@ -16,14 +17,14 @@ const InformacionLuz = () => {
 
   useEffect(() => {
     // Solicitud a la API para obtener la información del sensor
-    fetch('http://katanytt-api.34.73.226.103.sslip.io/iot/modulo/')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://katanytt-api.34.73.226.103.sslip.io/iot/modulo/")
+      .then((response) => response.json())
+      .then((data) => {
         const { nombre, descripcion, ubicacion, estado } = data;
         setSensorInfo({ nombre, descripcion, ubicacion, estado });
       })
-      .catch(error => {
-        console.error('Error al obtener los datos del sensor:', error);
+      .catch((error) => {
+        console.error("Error al obtener los datos del sensor:", error);
       });
   }, []);
 
@@ -38,32 +39,32 @@ const InformacionLuz = () => {
 
   const handleUpdateInfo = () => {
     // Actualización de la información en la API
-    fetch('http://127.0.0.1:8000/', {
-      method: 'PUT',
+    fetch("http://127.0.0.1:8000/", {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(editInfo),
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Datos actualizados con éxito:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Datos actualizados con éxito:", data);
       })
-      .catch(error => {
-        console.error('Error al actualizar los datos:', error);
+      .catch((error) => {
+        console.error("Error al actualizar los datos:", error);
       });
 
     setSensorInfo({ ...editInfo });
     setEditMode(false);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditInfo(prevInfo => ({ ...prevInfo, [name]: value }));
+    setEditInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
   };
 
   return (
-    <div className='cuerpo'>
+    <div className="cuerpo">
       <Navbar />
       <Sidebar2 />
       <div className="container-fluid">
@@ -83,7 +84,7 @@ const InformacionLuz = () => {
                 </button>
               </div>
             </div>
-  
+
             {editMode && (
               <div className="card floating-card">
                 <div className="card-header">
@@ -137,13 +138,15 @@ const InformacionLuz = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  <button className="btn btn-success" onClick={handleUpdateInfo}>
+                  <button
+                    className="btn btn-success"
+                    onClick={handleUpdateInfo}
+                  >
                     Guardar Cambios
                   </button>
                 </div>
               </div>
             )}
-            
           </main>
         </div>
       </div>
