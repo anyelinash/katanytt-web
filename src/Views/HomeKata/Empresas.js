@@ -20,6 +20,7 @@ const Empresas = () => {
     obtenerEmpresas();
   }, []);
 
+  // Método para obtener usuarios utilizando el método GET (funciona)
   const obtenerEmpresas = async () => {
     try {
       const response = await Axios.get('https://api.katayaku.xyz/v1/users/empresas');
@@ -62,6 +63,7 @@ const Empresas = () => {
     }
   };
 
+// Método para buscar empresas utilizando el método GET (funciona)
   const handleBuscarEmpresa = async () => {
     try {
       const response = await Axios.get('https://api.katayaku.xyz/v1/users/empresas');
@@ -82,9 +84,10 @@ const Empresas = () => {
     }
   };
 
+  // Método para eliminar un usuario utilizando el método DELETE (funciona)
   const handleEliminarEmpresa = async (id) => {
     try {
-      const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/empresas/${id}`);
+      const response = await Axios.delete(`https://api.katayaku.xyz/v1/users/empresa/${id}`);
       if (response.status === 204) {
         console.log('Empresa eliminada correctamente');
         obtenerEmpresas();
